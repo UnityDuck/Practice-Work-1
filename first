@@ -18,10 +18,23 @@ int main() {
 
     int number;
     int min_val = -1, max_val = -1;
+    char input[10];
 
     while (true) {
-        std::cin >> number;
-        if (number < 0) break;
+        std::cin >> input;
+
+        // Проверяем, не является ли ввод знаком '-'
+        if (input[0] == '-' && input[1] == '\0') {
+            break;
+        }
+
+        // Преобразуем строку в число
+        number = std::atoi(input);
+
+        // Проверяем границы числа (0 <= number <= 2^3 = 8)
+        if (number < 0 || number > 8) {
+            continue; // Пропускаем невалидные числа
+        }
 
         // Добавляем число в текущий массив
         int current_array = arrays_count - 1;
@@ -70,3 +83,4 @@ int main() {
 
     return 0;
 }
+
